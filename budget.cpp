@@ -49,6 +49,10 @@ int main()
     std::cout << "How much do you want to pay per month for rent? $";
     std::cin >> estimatedRent;
 
+    double averageMealCost;
+    std::cout << "How much is your expected average cost per meal? $";
+    std::cin >> averageMealCost;
+    double monthlyFoodExpense = averageMealCost * 3 * 30;
 
 
     clearScreen();
@@ -97,13 +101,16 @@ int main()
     //affordableRent = std::round(affordableRent / 100.0) * 100.0;  //rounded down
     double rentPercentage = (estimatedRent / monthlyEarnings) * 100;
     double salaryLeftOver = monthlyEarnings - estimatedRent;
+    salaryLeftOver -= monthlyFoodExpense;
 
     std::cout << "::: END OF Tax Calculation :::" << std::endl;
     
     std::cout << "\nOptimal Rent: $" << affordableRent << "/mo" << std::endl;
     std::cout << "Inputted Rent: $" << estimatedRent << "/mo" << std::endl;
     std::cout << "Percentage of Salary in Rent: " << rentPercentage << "%" << std::endl;
-    std::cout << "Salary left over after Rent: $" << salaryLeftOver << "/mo" << std::endl;
+    std::cout << "Food cost per day: " << averageMealCost * 3 << std::endl;
+    std::cout << "Food cost per month: " << monthlyFoodExpense << std::endl;
+    std::cout << "Salary left over after Rent & Food: $" << salaryLeftOver << "/mo" << std::endl;
 
     return 0;
 }
